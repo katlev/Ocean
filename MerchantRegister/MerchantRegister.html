@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>商家注册</title>
+    <!--引入bootstrap-->
+    <link rel="stylesheet" type="text/css" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+    <!--    引入FontAwesome-->
+    <link rel="stylesheet" type="text/css" href="../plugin/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--引入本地css样式  -->
+    <link rel="stylesheet" type="text/css" href="../Common/css/universal.css">
+    <link rel="stylesheet" type="text/css" href="../MerchantLogin/css/MerchantLogin.css">
+    <link rel="stylesheet" type="text/css" href="./css/MerchantRegister.css">
+</head>
+<body onload="setup()">
+<!--导航条-->
+<nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="container">
+        <div class="navbar-header visible-xs">
+            <a href="" class="navbar-brand ">海洋牧场交易平台</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="row">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="n col-md-1 col-xs-1"></ul>
+
+                <ul class="nav navbar-nav navbar-left col-md-5 col-xs-5 hidden-xs hidden-sm">
+                    <li class="navbar-text glyphicon glyphicon-envelope" aria-hidden="true">
+                        Email:haiyang@hg.com
+                    </li>
+                    <li class="navbar-text">
+                        /
+                    </li>
+                    <li class="navbar-text glyphicon glyphicon-earphone" aria-hidden="true">
+                        Phone:1234567898
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 20px" id="login">
+                    <li>
+                        <a href="../MerchantLogin/MerchantLogin.html">
+                            登录
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="col-md-2 col-xs-2 visible-xs"></ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--登录框-->
+<div class="container merchantLogin">
+    <div class="card-wrap">
+        <div class="card border-0 shadow card--login" id="MerchantLogin">
+            <div class="card_body">
+                <h2 class="card_title">海洋牧场商家注册</h2>
+                <form action="">
+                    <div id="step1" style="display: block">
+                        <div class="form-group">
+                            <span class="MerchantLoginTable">电话</span>
+                            <input type="text" class="form-control" id="MerchantPhone" placeholder="请输入联系电话">
+                        </div>
+                        <div class="form-group SendCode">
+                            <span class="MerchantLoginTable" style="display:block">验证码</span>
+                            <input type="text" class="form-control" id="MerchantCode">
+                            <a class="MerchantSendCode1" onclick="MerchantSend.MerchantSendCode()">发送验证码</a>
+                        </div>
+                        <div class="form-group">
+                            <span  class="MerchantLoginTable">用户名</span>
+                            <input type="text" class="form-control" id="MerchantRegisterName" placeholder="用户名">
+                        </div>
+                        <div class="form-group">
+                            <span class="MerchantLoginTable">设置密码</span>
+                            <input type="password" class="form-control" id="MerchantRegisterPwd" placeholder="输入密码">
+                        </div>
+                        <div class="form-group">
+                            <span class="MerchantLoginTable">确认密码</span>
+                            <input type="password" class="form-control" id="MerchantRegisterPwdAgn" placeholder="确认密码">
+                        </div>
+                        <div>
+                            <a class="btn btn-lg form-control" id="Register1">下一步</a>
+                        </div>
+                    </div>
+                    <div id="step2" style="display: none">
+                        <div class="form-group">
+                            <span  class="MerchantLoginTable">商户名</span>
+                            <input type="text" class="form-control" id="MerchantName" placeholder="用户名">
+                        </div>
+                        <div class="form-group">
+                            <span class="MerchantLoginTable">牧场地址</span>
+                            <div class="MerchantAddressSelect">
+                                <span class="dropdown-toggle">
+                                    <select name="" id="s1" onchange="getCountry()">
+                                        <option value="">国家</option>
+                                    </select>
+                                </span>
+                                <span class="dropdown">
+                                    <select name="" id="s2" onchange="getProvince()" style="display: none" >
+                                        <option value="">省份,州</option>
+                                    </select>
+                                    <select name="provSelect" id="id_provSelect" onchange="getChinaProv(this.value)" style="display: none" >
+                                        <option value="">省份</option>
+                                    </select>
+                                </span>
+                                <span class="dropdown">
+                                    <select name="" id="s3" style="display: none" class="dropdown">
+                                        <option value="">地级市,县</option>
+                                    </select>
+                                    <select name="citySelect" id="id_citySelect" onchange="getChinaCity(this.value)" style="display: none">
+                                        <option value="">城市</option>
+                                    </select>
+                                 </span>
+                            </div>
+                            <input type="text" class="form-control" id="MerchantRegisterAddress" placeholder="地址详情">
+                        </div>
+                        <div class="form-group">
+                            <span class="MerchantLoginTable">邮箱</span>
+                            <input type="text" class="form-control" id="MerchantRegisterEmail" placeholder="邮箱">
+                        </div>
+                        <div>
+                            <a class="btn btn-lg form-control" id="Register2">下一步</a>
+                        </div>
+                    </div>
+                    <div id="step3" style="display: none">
+                        <div class="form-group">
+                            <span  class="MerchantLoginTable">身份证号</span>
+                            <input type="text" class="form-control" id="MerchantIdNumber" placeholder="请填写身份证号">
+                        </div>
+                        <span class="MerchantLoginTable">上传身份证正面照</span>
+                        <div class="MerchantIdCard">
+                            <input type="file" id="file_input1" multiple="">
+                            <div class="MerchantPhotoUpload" id="MerchantIdCard">
+                                <i class="fa fa-plus UploadI"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <a class="btn btn-lg form-control MerchantRegBtn" id="Register3">下一步</a>
+                        </div>
+                    </div>
+                    <div id="step4" style="display: none">
+                        <div class="form-group">
+                            <span  class="MerchantLoginTable">养殖证名称</span>
+                            <input type="text" class="form-control" id="MerchantLicenseName" placeholder="请填写养殖证明编号">
+                        </div>
+                        <span class="MerchantLoginTable">上传养殖证明正面照</span>
+                        <div class="MerchantLicense">
+                            <input type="file" id="file_input2" multiple="">
+                            <div class="MerchantPhotoLicense" id="MerchantLicense">
+                                <i class="fa fa-plus LicenseI"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <a class="btn btn-lg form-control MerchantRegBtn" id="Register4">提交审核</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--底部栏-->
+<div class="bottom">
+    <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse">
+        <div class="container">
+            @海洋牧场交易平台
+        </div>
+    </nav>
+</div>
+
+<!--引入jquery-->
+<script src="../plugin/jquery-2.1.4/jquery.min.js"></script>
+<!--引用bootstrap-->
+<script src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<!--引入地址联动插件Pickpcc-->
+<script src="../plugin/PickPcc/worldAddress.js"></script>
+<script src="../plugin/PickPcc/TestAddress.js"></script>
+<script src="../plugin/PickPcc/TestChooseAddress.js"></script>
+<!--    引入本地js-->
+<script src="./js/MerchantRegister.js"></script>
+<script src="../Common/js/commom.js"></script>
+
+<!--地址联动-->
+<script>
+    var s = ['s1','s2','s3']
+    var opt0 = ['国家','省份,州','地级市,县']
+    function setup(){
+        change(0)
+    }
+</script>
+<script>
+
+    function loadProvince(regionId) {
+        $('#id_provSelect').html("")
+        $('#id_provSelect').append("<option value=''>省份</option>")
+
+        var jsonStr = getAddress(regionId,0)
+        for(var k in jsonStr){
+            $('#id_provSelect').append(
+                "<option value='" + k + "'>" + jsonStr[k] + "</option>"
+            )
+        }
+        if(regionId.length != 6){
+            $('#id_citySelect').html("")
+            $('#id_citySelect').append("<option value=''>城市</option>")
+
+        }else{
+            $('#id_provSelect').val(regionId.substring(0,2) + '0000')
+        }
+    }
+    function loadCity(regionId) {
+        $("#id_citySelect").html("");
+        $("#id_citySelect").append("<option value=''>城市</option>");
+
+            if(regionId.length === 6) {
+                var jsonStr = getAddress(regionId, 1);
+                for ( var k in jsonStr) {
+                    $("#id_citySelect").append(
+                        "<option value='"+k+"'>" + jsonStr[k] + "</option>");
+                }
+
+                if(regionId.substring(2,6) !== '0000') {
+                    $("#id_citySelect").val(regionId.substring(0, 4) + "00");
+                }
+        }
+    }
+    function getCountry() {
+        change(1);
+        var country = document.getElementById("s1");
+        var province = document.getElementById("s2");
+        var city = document.getElementById("s3");
+        var provSelect = document.getElementById("id_provSelect");
+        var citySelect = document.getElementById("id_citySelect");
+
+        if (country.value == "中国") {
+            loadProvince('440116');
+            provSelect.style.display = "block";
+            province.style.display = "none";
+            city.style.display = "none";
+        } else {
+            province.style.display = "block";
+            provSelect.style.display = "none";
+            citySelect.style.display = "none";
+        }
+    }
+    function getChinaProv(regionId) {
+        document.getElementById("id_citySelect").style.display = "block";
+        loadCity(regionId);
+    }
+    function getProvince() {
+        change(2);
+        var province = document.getElementById("s2");
+        var city = document.getElementById("s3");
+        city.style.display = 'block';
+    }
+</script>
+</body>
+</html>

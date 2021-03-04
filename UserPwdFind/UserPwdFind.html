@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>用户密码重置</title>
+    <!--引用bootstrap   -->
+    <link rel="stylesheet" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+    <!--    引入FontAwesome-->
+    <link rel="stylesheet" type="text/css" href="../plugin/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--引入css样式    -->
+    <link rel="stylesheet" type="text/css" href="../Common/css/universal.css">
+</head>
+<body>
+<!--导航条-->
+<nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="container">
+        <div class="navbar-header visible-xs">
+            <a href="" class="navbar-brand ">海洋牧场交易平台</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="row">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="n col-md-1 col-xs-1"></ul>
+                <ul class="nav navbar-nav navbar-left col-md-5 col-xs-5 hidden-xs hidden-sm">
+                    <li class="navbar-text glyphicon glyphicon-envelope" aria-hidden="true">
+                        Email:haiyang@hg.com
+                    </li>
+                    <li class="navbar-text">
+                        /
+                    </li>
+                    <li class="navbar-text glyphicon glyphicon-earphone" aria-hidden="true">
+                        Phone:1234567898
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 20px" id="login">
+                    <li>
+                        <a href="">
+                            登录
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../UserRegister/register.html">
+                            注册
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="col-md-2 col-xs-2 visible-xs"></ul>
+                <ul class="nav navbar-nav navbar-right col-md-4 col-xs-4" id="users" style="display: none">
+                    <li>
+                        <img
+                                src="../image/portrait.png"
+                                alt="portrait"
+                                class="img-responsive img-circle center-block"
+                                style="margin-top: 10px">
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" >katle <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">
+                                    <i
+                                            class="fa fa-user-circle-o"
+                                            aria-hidden="true"
+                                    ></i>
+                                    个人信息
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i
+                                            class="fa fa-cog"
+                                            aria-hidden="true"
+                                    ></i>
+                                    个性设置
+                                </a>
+                            </li>
+                            <li><a href="">
+                                <i
+                                        class="fa fa-cube"
+                                        aria-hidden="true"
+                                ></i>
+                                喜爱收藏</a></li>
+                            <li>
+                                <a href="">
+                                    <i
+                                            class="fa fa-sign-out"
+                                            aria-hidden="true"
+                                    ></i>
+                                    安全退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">我的订单</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--搜索栏-->
+<div class="container" style="margin-top: 70px">
+    <div class="row">
+        <div class=" col-md-4 hidden-xs hidden-md">
+            <img src="../image/logo3.png" alt="logo">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5 hidden-xs hidden-md">
+            <form action="" class="from-search row">
+                <div style="height: 45px ;width: 100%">
+                    <span class="dropdown" id="kind" style="width:20%">
+                        <span class="dropdown-toggle" data-toggle="dropdown" style="width: 80%">
+                            商品分类
+                            <span class="caret"></span>
+                        </span>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">
+                                    新鲜海鱼
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    新鲜海虾
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                新鲜扇贝
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    新鲜生蚝
+                                </a>
+                            </li>
+                        </ul>
+                    </span>
+                    <input class="searchInput" type="text" style="width:60%;border-left: 1px solid #9d9d9d;padding:10px;height: 38px;">
+                    <button id="icon" type="submit" style="width:10%" name="mouseColor">
+                        <i id="icon_items"  class="fa fa-search fa-lg" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--表单栏-->
+<div class="loginForm form-group">
+    <div class="loginHead">
+        <span class="head-left">
+            密码重置
+        </span>
+    </div>
+    <form action="" class="form" >
+        <div class="form-group">
+            <span>
+                电话
+            </span>
+            <div class="phone_check">
+             <span>
+                <input type="text" class="form-control col-md-6" id="phone" style="width: 55%">
+                <a class="checkNumber1" onclick="sends.send();">发送验证码</a>
+            </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <span>
+                验证码
+            </span>
+            <input type="text" class="form-control" id="check"/>
+        </div>
+        <div class="form-group">
+            <span>
+                设置密码
+            </span>
+            <input type="password" class="form-control" id="password">
+        </div>
+        <div class="form-group">
+            <span>
+                确认密码
+            </span>
+            <input type="password" class="form-control" id="passwordAgain">
+        </div>
+        <div class="registerBtn">
+            <a
+                    type="submit"
+                    class="form-control"
+                    onclick="findPwd()"
+                    style="color: #ffffff;text-align: center">
+                确认
+            </a>
+        </div>
+    </form>
+</div>
+
+<!--底部栏-->
+<div class="bottom">
+    <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse">
+        <div class="container">
+            @海洋牧场交易平台
+        </div>
+    </nav>
+</div>
+
+
+<!--引入jQuery-->
+<script src="../plugin/jquery-2.1.4/jquery.min.js"></script>
+<!--引入bootstrap-->
+<script src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<!--引入本地js-->
+<script src="../Common/js/commom.js"></script>
+</body>
+<script>
+
+    function findPwd() {
+
+        var password = $('#password').val()
+        var passwordAgain = $('#passwordAgain').val()
+        var phoneNumber = $('#phone').val()
+        console.log(phoneNumber)
+        var code = $('#check').val()
+        console.log(code)
+        if(
+            password.trim() === ''||
+            passwordAgain.trim() === '' ||
+            code.trim() === ''||
+            phoneNumber.trim() === '')
+        {
+            alert('输入不能为空')
+        }
+        else if(password !== passwordAgain){
+            alert('输入的密码不一致')
+        }
+
+        $.ajax({
+            type:'POST',
+            url:'http://39.108.184.155:8080/searanch/resetPwd',
+            dataType: 'JSON',
+            data:{
+                code:code,
+                password:password,
+                phoneNumber:phoneNumber
+            },
+            success:function (result) {
+                if(result.code === 200){
+                    alert("密码重置成功")
+                    location.href = '../UserLogin/login.html'
+                    console.log(result.message)
+                }
+                else{
+                    console.log(result.message)
+                }
+            },
+            error:function (error) {
+                console.log(error,'error')
+                console.log('请求失败')
+            }
+
+        })
+    }
+    /*发送验证码*/
+    var sends = {
+        checked:1,
+        send:function () {
+            var numbers = /^1\d{10}$/
+            var phoneNumber = $('#phone').val().replace(/\s+/g,"")//获取输入手机号
+
+            if(!numbers.test(phoneNumber) || phoneNumber.length === 0){
+                alert("请输入正确的手机格式！")
+                return false
+            }
+            $.ajax({
+                type:'POST',
+                url:'http://39.108.184.155:8080/searanch/getMessageCode',
+                dataType: 'JSON',
+                xhrFields:{
+                    withCredentials: true
+                },
+                data:{
+                    phoneNumber:phoneNumber
+                },
+                success:function (result) {
+                    console.log(result)
+                    alert('验证码发送成功')
+                }
+            })
+
+            if(numbers.test(phoneNumber)){
+                var time = 60;
+                function timeCountDown() {
+                    if(time === 0){
+                        clearInterval(timer)
+                        $('.phone_check a').addClass('checkNumber1').removeClass('checkNumber2').html("发送验证码")
+                        sends.checked = 1
+                        return true
+                    }
+                    $('.phone_check a').html(time + 's后再次发送')
+                    time--;
+                    return false
+                    sends.checked = 0
+                }
+                $('.phone_check a').addClass('checkNumber2').removeClass("checkNumber1")
+                timeCountDown()
+                var timer = setInterval(timeCountDown,1000)
+            }
+        }
+    }
+
+</script>
+</html>

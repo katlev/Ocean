@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>首页-海洋牧场交易平台</title>
+    <!--jQueryUI-->
+    <link  href="../plugin/jquery-2.1.4/jquery.toast.min.css">
+    <!--引用bootstrap   -->
+    <link rel="stylesheet" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+    <!--    引入FontAwesome-->
+    <link rel="stylesheet" type="text/css" href="../plugin/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--引入分页-->
+    <link rel="stylesheet" href="../plugin/pagination/pagination.css">8
+    <!--引入css样式-->
+    <link rel="stylesheet" type="text/css" href="../Common/css/universal.css">
+</head>
+<body  onload="load_data()">
+<!--导航条-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header visible-xs">
+            <a href="" class="navbar-brand ">海洋牧场交易平台</a>
+            <button
+                    type="button"
+                    class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false"
+            >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="row">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="n col-md-1 col-xs-1"></ul>
+                <ul class="nav navbar-nav navbar-left col-md-5 col-xs-5 hidden-xs hidden-sm">
+                    <li class="navbar-text glyphicon glyphicon-envelope" aria-hidden="true">
+                        Email:haiyang@hg.com
+                    </li>
+                    <li class="navbar-text">
+                        /
+                    </li>
+                    <li class="navbar-text glyphicon glyphicon-earphone" aria-hidden="true">
+                        Phone:1234567898
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" id="login" style="display: inline-block">
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">登录</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../UserLogin/login.html">
+                                    <i  class="fa fa-user-circle"></i>
+                                    用户登录
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../MerchantLogin/MerchantLogin.html">
+                                    <i class="fa fa-paper-plane-o"></i>
+                                    商家登录
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">注册</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../UserRegister/register.html">
+                                    <i class="fa fa-user-plus" ></i>
+                                    用户注册
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../MerchantRegister/MerchantRegister.html">
+                                    <i class="fa fa-archive"></i>
+                                    商家注册
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right"  id="users">
+                    <li class="dropdown" id="userMsg">
+                        <a
+                                href=""
+                                class="dropdown-toggle fa fa-caret-down"
+                                data-toggle="dropdown"
+                                id="name"
+                                style="display: inline-block;">
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../UserMessage/UserMsg.html">
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    个人信息
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" onclick="leave()">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    安全退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../Myorder/shop-list.html">
+                            我的订单
+                        </a>
+                    </li>
+                    <li class="visible-xs">
+                        <a href="../shoppingCart/index.html">
+                            购物车
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--搜索栏-->
+<div class="container" style="margin-top: 70px">
+    <div class="row">
+        <!--web端-->
+        <div class="col-xs-12 col-sm-4 col-md-4 hidden-xs hidden-md">
+            <img src="../image/logo3.png" alt="logo" class="img-responsive">
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-5 hidden-xs hidden-md">
+            <form action="" class="from-search row">
+                <div style="height: 45px ;width: 100%">
+                    <span class="dropdown col-sm-" id="kind" style="width:20%">
+                        <span class="dropdown-toggle" data-toggle="dropdown" style="width: 80%">
+                            商品分类
+                            <i class="caret"></i>
+                        </span>
+                        <ul class="dropdown-menu searchItems">
+                            <li><a href="javascript:">鱼</a></li>
+                            <li><a href="javascript:">虾</a></li>
+                            <li><a href="javascript:">蟹</a></li>
+                            <li><a href="javascript:">生蚝</a></li>
+                        </ul>
+                    </span>
+                    <input class="searchInput searchKey"  type="text" style="width:60%;border-left: 1px solid #9d9d9d;padding:10px;height: 38px;">
+                    <div id="icon" type="submit" style="width:10%" name="mouseColor">
+                        <i id="icon_items"  class="fa fa-search fa-lg" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="shopCart" name="showHide" class="col-xs-12 col-sm-3 col-md-3 hidden-xs hidden-md" style="width: 25%;margin-top: 5px;height: 80px">
+            <a href="../shoppingCart/index.html" style="text-decoration: none">
+                <div  class="shoppingCart" id="shoppingCart">
+                    <i class="fa fa-shopping-cart fa-fw fa-1x" aria-hidden="true"></i>
+                    我的购物车
+                 </div>
+            </a>
+            <div id="shopCart_items">
+                去购物车看看！
+            </div>
+        </div>
+        <!--移动端-->
+        <div class="xs_search visible-xs">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" class="searchKey">
+            <button id="mobileSearch">搜索</button>
+        </div>
+    </div>
+</div>
+
+<!--固定的浮动栏-->
+<div id="side_panel">
+    <div name="sideMouseColor" id="advisory">
+        <button  id="advisory_items" class="side_style">
+            <i class="fa fa-commenting-o"></i>
+            客服
+        </button>
+    </div>
+    <div name="sideMouseColor" id="gotop">
+        <button id="gotop_items" class="side_style">
+            <i class="fa fa-chevron-up"></i>
+            返回
+        </button>
+    </div>
+</div>
+
+<!--客服-->
+<div class="class=dialogue-wrapper" style="position:fixed;right: 70px;display: block;z-index: 1;bottom: 50px;">
+    <div class="dialogue-main">
+        <div class="dialogue-header">
+            <i class="fa fa-close dialogue-close" id="btn_close"></i>
+            <div class="dialogue-service-info">
+                <img src="../image/xiazai46.png" class="dialogue-service-img" alt="">
+                <div class="dialogue-service-title">
+                    <span class="dialogue-service-name">海洋牧场交易平台</span>
+                    <span class="dialogue-service-detail" id="serviceMsg"></span>
+                </div>
+            </div>
+        </div>
+        <div id="dialogue_contain" class="dialogue-contain">
+            <p class="dialogue-service-contain">
+                <span class="dialogue-toast" id="dialogue-toast"></span>
+                <span class="dialogue-text dialogue-service-text">
+                    您好，请提问
+                </span>
+            </p>
+        </div>
+        <div class="dialogue-submit">
+            <div id="dialogue_hint" class="dialogue-hint">
+                <span class="dialogue-hint-icon">!</span>
+                <span class="dialogue-hint-text">发送内容不能为空</span>
+            </div>
+            <textarea id="dialogue_input" class="dialogue-input-text" style="overflow-y:hidden"></textarea>
+            <div class="dialogue-input-tools">
+               <a id="sendMsg"><i class="fa fa-send"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--商品分类栏-->
+<div class="container">
+    <div class="row type visible-xs" style="margin-top: 30px">
+        <ul class="searchItems">
+            <li><a href="javascript:">全部</a></li>
+            <li><a href="javascript:">鱼</a></li>
+            <li><a href="javascript:">虾</a></li>
+            <li><a href="javascript:">蟹</a></li>
+            <li><a href="javascript:">贝类</a></li>
+            <li><a href="javascript:">藻类</a></li>
+            <li><a href="javascript:">足头类</a></li>
+            <li><a href="javascript:">肉类</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div id="carousel-example-generic" class="carousel slide " data-ride="carousel">
+            <!-- 圆点 -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+            </ol>
+            <!-- 图片 -->
+            <div class="carousel-inner" role="listbox" style="margin-top: 30px">
+                <div class="item active">
+                    <img src="../image/coul4.jpg" alt="carousel4" class="img-responsive hidden-xs">
+                    <img src="../image/cou1.jpg" alt="carousel1" class="img-responsive hidden-lg hidden-md">
+                </div>
+                <div class="item">
+                    <img src="../image/coul3.jpg" alt="carousel3" class="img-responsive hidden-xs">
+                    <img src="../image/cou1.jpg" alt="carousel1" class="img-responsive hidden-lg hidden-md">
+                </div>
+                <div class="item ">
+                    <img src="../image/coul1.jpg" alt="carousel1" class="img-responsive hidden-xs">
+                    <img src="../image/cou1.jpg" alt="carousel1" class="img-responsive hidden-lg hidden-md">
+                </div>
+                <div class="item">
+                    <img src="../image/coul2.jpg" alt="carousel2" class="img-responsive hidden-xs">
+                    <img src="../image/cou1.jpg" alt="carousel1" class="img-responsive hidden-lg hidden-md">
+                </div>
+                <div class="item">
+                    <img src="../image/coul5.jpg" alt="carousel5" class="img-responsive hidden-xs">
+                    <img src="../image/cou1.jpg" alt="carousel1" class="img-responsive hidden-lg hidden-md">
+                </div>
+            </div>
+            <!-- 左右移动标签 -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+</div>
+<!--商品详情-->
+<div class="container h-hr">
+    <hr>
+    <div class="row">
+        <ul class="kind_list row" id="HomeContent">
+            <li class="left_kind hidden-xs hidden-ms">
+                <div class="goods_width">
+                    <div class="left_title">买海鲜的分类</div>
+                    <ul>
+                        <li>
+                            <p class="kind_items"><a href="">种类</a></p>
+                            <div class="kind_items_details">
+                                <ul class="goodsTypes searchItems">
+                                    <li><a href="javascript:">鱼</a></li>
+                                    <li><a href="javascript:">虾</a></li>
+                                    <li><a href="javascript:">蟹</a></li>
+                                    <li><a href="javascript:">贝</a></li>
+                                    <li><a href="javascript:">藻</a></li>
+                                    <li><a href="javascript:">足头类</a></li>
+                                    <li><a href="javascript:">肉类</a></li>
+                                    <li><a href="javascript:">其它</a></li>
+                                </ul>
+                            </div>
+                            <p class="kind_items"><a href="">加工方式</a></p>
+                            <div class="kind_items_details">
+                                <ul class="goodsTypes searchItems">
+                                    <li><a href="javascript:">生鲜</a></li>
+                                    <li><a href="javascript:">冷冻</a></li>
+                                    <li><a href="javascript:">干品</a></li>
+                                    <li><a href="javascript:">即食</a></li>
+                                    <li><a href="javascript:">罐头</a></li>
+                                    <li><a href="javascript:">深加工</a></li>
+                                </ul>
+                            </div>
+                            <p class="kind_items"><a href="">特色</a></p>
+                            <div class="kind_items_details">
+                                <ul class="goodsTypes searchItems">
+                                    <li><a href="javascript:">生蚝</a></li>
+                                    <li><a href="javascript:">海鱼</a></li>
+                                    <li><a href="javascript:">海虾</a></li>
+                                    <li><a href="javascript:">海蟹</a></li>
+                                    <li><a href="javascript:">鱿鱼</a></li>
+                                    <li><a href="javascript:">海参</a></li>
+                                </ul>
+                            </div>
+
+                            <div id="lable" name="mouseColor">
+                                <div class="left_title" id="lable_items" style="margin-top: 50px;margin-bottom: 50px">
+                                    <i class="fa fa-tag" aria-hidden="true"></i> 热门标签
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <p></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <ul id="content">
+
+            </ul>
+        </ul>
+    </div>
+
+</div>
+
+<!--底部栏-->
+<div class="bottom">
+    <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse">
+        <div class="container">
+            @海洋牧场交易平台
+        </div>
+    </nav>
+</div>
+
+<!--引入jQuery-->
+<script src="../plugin/jquery-2.1.4/jquery.min.js"></script>
+<script src="../plugin/jquery-2.1.4/jquery.toast.min.js"></script>
+<!--引入bootstrap-->
+<script src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<!--引入地址联动插件-->
+<script src="../plugin/PickPcc/worldAddress.js"></script>
+<script src="../plugin/PickPcc/TestAddress.js"></script>
+<script src="../plugin/PickPcc/TestChooseAddress.js"></script>
+<!--引入分页设置-->
+<script src="../plugin/pagination/jquery.pagination.js"></script>
+<!--引入本地js-->
+<script src="./js/home.js"></script>
+<script src="../Common/js/commom.js"></script>
+
+</body>
+</html>

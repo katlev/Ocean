@@ -1,0 +1,86 @@
+.card {
+    position: absolute;
+    margin-top: 300px;
+    left: 50%;
+    width: 90%;
+    border-radius: 10px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #ffffff;
+    -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+}
+.card-wrap{
+    position: relative;
+    margin: 0 auto;
+}
+@media (min-width:769px ) {
+    .card-wrap{
+        max-width: 450px;
+    }
+}
+.card_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.card_title{
+    font-weight: bold;
+    font-size: 24px;
+    color:#A7BFE8;
+    border-bottom: 1px solid #E8E8E8;
+}
+.form-group{
+    width: 250px;
+}
+.MerchantLoginTable{
+    font-size: 16px;
+}
+.btn{
+    color:#fff !important;
+    width:250px;
+    height: 34px;
+    line-height: 15px;
+    transition: all .4s;
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+a.MerchantLoginFooter{
+    float: right;
+}
+a.MerchantLoginFooter:hover{
+    text-decoration: none;
+}
+.card--login .card--login{
+    color:#a7bfe8;
+}
+.card--login .btn{
+    background-color: #a7bfe8;
+}
+.card--login .btn:hover{
+    background-color: #fff;
+    color:#a7bfe8 !important;
+    font-weight: bold;
+    border:2px solid rgba(167,191,232,.25);
+}
+.card--login .btn:focus{
+    box-shadow:0 0 0 0.2rem rgba(167,191,232,.25);
+}
+.card--login .form-control{
+    color:#a7bfe8;
+    border-color:rgba(167,191,232,.25);
+}
+.card--login .form-control:focus{
+    box-shadow:0 0 0 0.2rem rgba(167,191,232,.25);
+}
+body{
+    background-color:  #a7bfe8;
+    background-size:500% 500%;
+    transition:background 3s ease;
+    background-position:50% 50%;
+}
+
+
+

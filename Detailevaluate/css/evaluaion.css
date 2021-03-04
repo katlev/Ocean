@@ -1,0 +1,31 @@
+/*User evaluation style*/
+.UserEvaluationHeader img{
+    display: inline-block;
+}
+.EvaluationRight{
+    display: inline-block;
+}
+.EvaluationRight span{
+    display: block;
+    margin-left: 10px;
+}
+.EvaluationScore{
+    font-size: 10px;
+    color:#FF7F50;
+    margin-left: 10px;
+    display: inline-block;
+    float: right;
+}
+.EvaluationContent{
+    width: 95%;
+    margin: auto;
+    padding:10px;
+
+}
+.EvaluationImag{
+    width: 95%;
+    margin: auto;
+    padding:10px;
+    border-bottom: 1px solid #CCCCCC;
+}
+

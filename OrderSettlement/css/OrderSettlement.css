@@ -1,0 +1,111 @@
+/*css样式*/
+body{
+    background-color: #F4F6FA;
+}
+.SettlementForm{
+    width:90%;
+    margin: auto;
+    margin-top: 100px;
+    border:1px solid #E8E8E8;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .4);
+}
+.SettlementForm header{
+    font-size: 24px;
+    padding:5px 20px;
+    line-height: 24px;
+}
+.SettlementForm h3{
+    display: inline-block;
+}
+.SettlementContent{
+    width:100%;
+    padding:5px;
+
+}
+.SettlementAddress{
+    margin: auto;
+    padding: 10px;
+    height: 80px;
+    border-radius: 5px;
+}
+.SACoin{
+    text-align: center;
+    font-size: 36px;
+    display: inline-block;
+    width: 10%;
+    color:#09D07D;
+}
+.SAContent{
+    display: inline-block;
+    width: 85%;
+    font-size: 16px;
+    margin-top: 5px;
+}
+.SAContent i{
+    margin-left: 5px;
+    font-size: 20px;
+}
+.MerchantAddressSelect span {
+    margin:5px 0;
+}
+.MerchantAddressSelect select{
+    text-align: center;
+    padding:5px;
+    margin: 5px 0;
+    width: auto;
+    line-height: 20px;
+}
+.SettlementContent{
+    width: 100%;
+    padding:5px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+.SettlementContent header{
+    font-size: 16px;
+}
+.SettlementContent ul{
+    border:1px solid #F4F6FA;
+    border-radius: 5px;
+}
+.SettlementGoods{
+    width: 100%;
+    margin: auto;
+    padding:5px;
+}
+.SGImg{
+    display: inline-block;
+    text-align: right;
+}
+.SGImg img{
+    border-radius: 5px;
+    width: 100px;
+    height:100px;
+}
+.SGgoods{
+    display:inline-flex;
+    justify-content: space-around;
+    font-size: 14px;
+    height: 100px;
+    line-height: 100px;
+}
+.SGgoodsTitle{
+   /* width: 70px;*/
+    height: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.SettlementFooter{
+   line-height: 50px;
+    text-align: right;
+}
+.settlePrice{
+    font-size: 16px;
+    font-weight: bold;
+    color:#E64346;
+    margin-right: 5px;
+}
+

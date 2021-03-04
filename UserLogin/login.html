@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>用户登录-海洋牧场交易平台</title>
+    <!--引用bootstrap   -->
+    <link rel="stylesheet" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+    <!--    引入FontAwesome-->
+    <link rel="stylesheet" type="text/css" href="../plugin/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--引入css样式    -->
+    <link rel="stylesheet" type="text/css" href="../Common/css/universal.css">
+
+</head>
+<body>
+<!--导航条-->
+<nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="container">
+        <div class="navbar-header visible-xs">
+            <a href="" class="navbar-brand ">海洋牧场交易平台</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="row">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="n col-md-1 col-xs-1"></ul>
+                <ul class="nav navbar-nav navbar-left col-md-5 col-xs-5 hidden-xs hidden-sm">
+                    <li class="navbar-text glyphicon glyphicon-envelope" aria-hidden="true">
+                        Email:haiyang@hg.com
+                    </li>
+                    <li class="navbar-text">
+                        /
+                    </li>
+                    <li class="navbar-text glyphicon glyphicon-earphone" aria-hidden="true">
+                        Phone:1234567898
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 20px;display: none" id="login">
+                    <li>
+                        <a href="">
+                            登录
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../UserRegister/register.html">
+                            注册
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="col-md-2 col-xs-2 visible-xs"></ul>
+                <ul class="nav navbar-nav navbar-right col-md-4 col-xs-4" id="users" style="display: none">
+                    <li>
+                        <img
+                                src="../image/portrait.png"
+                                alt="portrait"
+                                class="img-responsive img-circle center-block"
+                                style="margin-top: 10px">
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" >katle <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">
+                                    <i
+                                            class="fa fa-user-circle-o"
+                                            aria-hidden="true"
+                                    ></i>
+                                    个人信息
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i
+                                            class="fa fa-cog"
+                                            aria-hidden="true"
+                                    ></i>
+                                    个性设置
+                                </a>
+                            </li>
+                            <li><a href="">
+                                <i
+                                        class="fa fa-cube"
+                                        aria-hidden="true"
+                                ></i>
+                                喜爱收藏</a></li>
+                            <li>
+                                <a href="">
+                                    <i
+                                            class="fa fa-sign-out"
+                                            aria-hidden="true"
+                                    ></i>
+                                    安全退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">我的订单</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--搜索栏-->
+<div class="container" style="margin-top: 70px">
+    <div class="row">
+        <div class=" col-md-4 hidden-xs hidden-md">
+            <img src="../image/logo3.png" alt="logo">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5 hidden-xs hidden-md">
+            <form action="" class="from-search row">
+                <div style="height: 45px ;width: 100%">
+                    <span class="dropdown" id="kind" style="width:20%">
+                        <span class="dropdown-toggle" data-toggle="dropdown" style="width: 80%">
+                            商品分类
+                            <span class="caret"></span>
+                        </span>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">
+                                    新鲜海鱼
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    新鲜海虾
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                新鲜扇贝
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    新鲜生蚝
+                                </a>
+                            </li>
+                        </ul>
+                    </span>
+                    <input class="searchInput" type="text" style="width:60%;border-left: 1px solid #9d9d9d;padding:10px;height: 38px;">
+                    <button id="icon" type="submit" style="width:10%" name="mouseColor">
+                        <i id="icon_items"  class="fa fa-search fa-lg" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--表单栏-->
+<div class="loginForm form-group">
+    <div class="loginHead">
+        <span class="head-left">
+            登录
+        </span>
+        <a href="../UserRegister/register.html" class="head-right" style="font-size: 12px">
+            马上注册
+        </a>
+        <span class="head-right" style="font-size: 12px">
+            没有账号？
+        </span>
+    </div>
+    <form action="" class="form" >
+        <div class="form-group">
+            <span>
+                用户名
+            </span>
+            <input type="text" class="form-control" id="username">
+        </div>
+        <div class="form-group">
+            <span>
+                密码
+            </span>
+            <input type="password" class="form-control" id="password">
+        </div>
+        <div >
+            <div class="registerBtn">
+                <a
+                        type="submit"
+                        class="form-control loginBtn"
+                        onclick="login()"
+                        style="color: #ffffff;text-align: center">
+                    登录
+                </a>
+            </div>
+
+            <a href="../UserPwdFind/UserPwdFind.html" class="head-right" style="font-size: 12px;margin:5px 0;margin-bottom: 10px">
+                重置密码
+            </a>
+        </div>
+    </form>
+</div>
+
+<!--底部栏-->
+<div class="bottom">
+    <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse">
+        <div class="container">
+            @海洋牧场交易平台
+        </div>
+    </nav>
+</div>
+<!--    引入js-->
+<script src="../plugin/jquery-2.1.4/jquery.min.js"></script>
+<script src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="../Common/js/commom.js"></script>
+<script>
+    function login() {
+
+        var phoneNumber = $('#username').val()
+        var password = $('#password').val()
+
+        if(phoneNumber.trim() === '' || password.trim() === '')
+        {
+            alert("输入不能为空！")
+            return
+        }
+
+        $.ajax({
+            type:'POST',
+            url: 'http://39.108.184.155:8080/searanch/login',
+            dataType: 'JSON',
+            xhrFields:{//实现跨域访问
+                withCredentials:true
+            },
+            contentType:'application/x-www-form-urlencoded',
+            data:{
+                phoneNumber:phoneNumber,
+                password:password
+            },
+            success:function (result) {
+                console.log(result)
+                if(result.code === 200) {
+
+                    console.log(result.message)
+                    location.href = '../Home/home.html'
+                    //将用户名和密码存储在session里面，首页显示用户名称
+                    localStorage.setItem('phoneNumber', phoneNumber)
+                    load_data()
+
+                    let token = result.data.token
+                    console.log(result.data.token)
+                    console.log(token)
+                    window.localStorage.setItem('lo_token', token)
+
+                    window.localStorage.setItem('userId',result.data.userId)
+                    console.log(result.data.userId)
+
+                }
+                else{
+                    alert(result.message)
+                }
+            },
+            error:function (error) {
+                console.log(error)
+            }
+        })
+    }
+</script>
+</body>
+</html>

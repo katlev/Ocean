@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>订单结算</title>
+    <!--jQueryUI-->
+    <link  href="../plugin/jquery-2.1.4/jquery.toast.min.css">
+    <!--引用bootstrap   -->
+    <link rel="stylesheet" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+    <!--    引入FontAwesome-->
+    <link rel="stylesheet" type="text/css" href="../plugin/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--引入Dialog-->
+    <link rel="stylesheet" href="../plugin/Dialog/dialog.css">
+    <!--引入css样式    -->
+    <link rel="stylesheet" type="text/css" href="../Common/css/universal.css">
+    <link rel="stylesheet" href="./css/OrderSettlement.css">
+</head>
+<body onload="setup()">
+<!--导航条-->
+<nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="container">
+        <div class="navbar-header">
+            <a href="" class="navbar-brand">海洋牧场交易平台</a>
+            <button
+                    type="button"
+                    class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="row">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="../Home/home.html">首页</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-left:2px" role="tablist">
+                    <li class="dropdown" id="userMsg">
+                        <a
+                                href=""
+                                class="dropdown-toggle fa fa-caret-down"
+                                data-toggle="dropdown"
+                                id="name"
+                                style="display: inline-block">
+
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../UserMessage/UserMsg.html">
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    个人信息
+                                </a>
+                            </li>
+                            <li>
+                                <a id="leave">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    安全退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--确认订单-->
+<div class="container" style="margin-bottom: 100px">
+    <div class="row">
+        <div class="SettlementForm">
+            <header>
+                <div>
+                    <i class="fa fa-check-square-o"></i>
+                    <h3>订单结算</h3>
+                </div>
+            </header>
+            <div class="SettlementContent">
+                <div class="SettlementAddress row">
+                    <div class="SACoin col-md-1 col-xs-1">
+                        <i class="fa fa-map-marker"></i>
+                    </div>
+                    <div class="SAContent col-md-11 col-xs-11 ">
+                        <table id="show-table">
+                            <tr>
+                                <td>
+                                    <span id="settleName"></span>
+                                    <span id="settlePhone"></span>
+                                    <div name="mouseColor" id="settleIcon">
+                                        <span id="settleAddress">编辑收货地址</span>
+                                        <i class="fa fa-edit" id="settleIcon_items" type="button" data-toggle="modal" data-target="#exampleModal"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                 </div>
+            </div>
+            <!--编辑框-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="exampleModalLabel">编辑收货地址</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="xztb">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="control-label">收件人：</label>
+                                    <input type="text" class="form-control" id="recipient-name" placeholder="姓名">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="control-label">联系电话：</label>
+                                    <input type="text" class="form-control" id="recipient-phone" placeholder="电话">
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-adress" class="control-label">详细地址:</label>
+                                    <div class="MerchantAddressSelect">
+                                        <span class="dropdown-toggle">
+                                            <select name="" id="s1" onchange="getCountry()">
+                                                <option value="">国家</option>
+                                            </select>
+                                        </span>
+                                        <span class="dropdown">
+                                            <select name="" id="s2" onchange="getProvince()" style="display: none" >
+                                                <option value="">省份,州</option>
+                                            </select>
+                                            <select name="provSelect" id="id_provSelect" onchange="getChinaProv(this.value)" style="display: none" >
+                                                <option value="">省份</option>
+                                            </select>
+                                        </span>
+                                        <span class="dropdown">
+                                            <select name="" id="s3" style="display: none" class="dropdown">
+                                                <option value="">地级市,县</option>
+                                            </select>
+                                            <select name="citySelect" id="id_citySelect" onchange="getChinaCity(this.value)" style="display: none">
+                                                <option value="">城市</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" id="recipient-adress" placeholder="地址详情">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" id="settleEdit">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container SettlementContent">
+                <header>
+                    <i class="fa fa-file-text"></i>
+                    <span>订单号：</span>
+                    <span id="orderNumber"></span>
+                </header>
+               <ul id="settlementUl">
+
+               </ul>
+            </div>
+            <div>
+                <nav class="navbar navbar-default navbar-fixed-bottom">
+                    <div class="container SettlementFooter">
+                        <span>
+                            共<span id="settleGoodsNum"></span>件
+                        </span>
+                        <span>合计：</span>
+                        <span class="settlePrice">
+                            ￥<span></span>
+                        </span>
+                        <button class="btn btn-primary" id="mdialog">提交订单</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 引入jQuery-->
+<script src="../plugin/jquery-2.1.4/jquery.min.js"></script>
+<script src="../plugin/jquery-2.1.4/jquery.toast.min.js"></script>
+<!--引入bootstrap-->
+<script src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<!--引入Dialog-->
+<script src="../plugin/Dialog/mDialogMin.js"></script>
+<!--引入地址联动插件Pickpcc-->
+<script src="../plugin/PickPcc/worldAddress.js"></script>
+<script src="../plugin/PickPcc/TestAddress.js"></script>
+<script src="../plugin/PickPcc/TestChooseAddress.js"></script>
+<!--引入本地js-->
+<script src="../Common/js/commom.js"></script>
+<script src="./js/OrderSettlement.js"></script>
+
+<!--地址联动-->
+<script>
+    var s = ['s1','s2','s3']
+    var opt0 = ['国家','省份,州','地级市,县']
+    function setup(){
+        change(0)
+    }
+</script>
+<script>
+    var userToken = window.localStorage.getItem('lo_token')
+    mdialog.onclick = function () {
+        var settleName = $('#settleName').text()
+        var settlePhone = $('#settlePhone').text()
+        if(settleName === '' || settlePhone === ''){
+            alert('你的收货地址还未填写')
+            return
+        }
+
+        Dialog.init('<img src="./images/pay.jpg" width="100%">',{
+            title:'下单成功，请确认支付',
+            button:{
+                确认:function () {
+
+                    var orderNumber = localStorage.getItem('orderNumber')
+                    $.ajax({
+                        type:'post',
+                        url:'http://39.108.184.155:8080/searanch/order/pay',
+                        dataType:'json',
+                        headers:{'Authorization':userToken},
+                        data:{
+                            orderNumber:orderNumber
+                        },
+                        success:function (res) {
+                            console.log(res)
+                            if(res.code == 200){
+                                console.log(res.message)
+                                window.location.href = '../Myorder/shop-list.html'
+                            }else{
+                                console.log(res.message)
+                                alert(res.message)
+                            }
+                        },
+                        error:function (error) {
+                            console.log(error)
+                        }
+                    })
+                },
+                取消:function () {
+                    Dialog.close(this)
+                },
+            }
+        })
+    }
+
+    function loadProvince(regionId) {
+        $('#id_provSelect').html("")
+        $('#id_provSelect').append("<option value=''>省份</option>")
+
+        var jsonStr = getAddress(regionId,0)
+        for(var k in jsonStr){
+            $('#id_provSelect').append(
+                "<option value='" + k + "'>" + jsonStr[k] + "</option>"
+            )
+        }
+        if(regionId.length != 6){
+            $('#id_citySelect').html("")
+            $('#id_citySelect').append("<option value=''>城市</option>")
+        }else{
+            $('#id_provSelect').val(regionId.substring(0,2) + '0000')
+        }
+    }
+    function loadCity(regionId) {
+        $("#id_citySelect").html("");
+        $("#id_citySelect").append("<option value=''>城市</option>");
+
+        if(regionId.length === 6) {
+            var jsonStr = getAddress(regionId, 1);
+            for ( var k in jsonStr) {
+                $("#id_citySelect").append(
+                    "<option value='"+k+"'>" + jsonStr[k] + "</option>");
+            }
+
+            if(regionId.substring(2,6) !== '0000') {
+                $("#id_citySelect").val(regionId.substring(0, 4) + "00");
+            }
+        }
+    }
+    function getCountry() {
+        change(1);
+        var country = document.getElementById("s1");
+        var province = document.getElementById("s2");
+        var city = document.getElementById("s3");
+        var provSelect = document.getElementById("id_provSelect");
+        var citySelect = document.getElementById("id_citySelect");
+
+        if (country.value == "中国") {
+            loadProvince('440116');
+            provSelect.style.display = "block";
+            province.style.display = "none";
+            city.style.display = "none";
+        } else {
+            province.style.display = "block";
+            provSelect.style.display = "none";
+            citySelect.style.display = "none";
+
+        }
+    }
+    function getChinaProv(regionId) {
+        document.getElementById("id_citySelect").style.display = "block";
+        loadCity(regionId);
+    }
+    function getChinaCity(regionId) {
+
+    }
+    function getProvince() {
+        change(2);
+        var province = document.getElementById("s2");
+        var city = document.getElementById("s3");
+        city.style.display = 'block';
+    }
+</script>
+</body>
+</html>

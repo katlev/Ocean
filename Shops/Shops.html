@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>牧场主</title>
+    <!--jQueryUI-->
+    <link  href="../plugin/jquery-2.1.4/jquery.toast.min.css">
+    <link rel="stylesheet" href="../plugin/DatePicker/jquery-ui.css">
+    <!--引用bootstrap   -->
+    <link rel="stylesheet" href="../plugin/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+    <!--    引入FontAwesome-->
+    <link rel="stylesheet" type="text/css" href="../plugin/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--引入分页插件-->
+    <link rel="stylesheet" href="../plugin/pagination/pagination.css">
+    <!--引入css样式    -->
+    <link rel="stylesheet" type="text/css" href="../Common/css/universal.css">
+    <link rel="stylesheet" type="text/css" href="./css/Shops.css">
+</head>
+<body onload="setup()">
+<!--导航栏-->
+<nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="container">
+        <div class="navbar-header">
+            <a href="" class="navbar-brand">海洋牧场交易平台</a>
+            <button
+                    type="button"
+                    class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="row">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="../Home/home.html">首页</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-left:2px" role="tablist">
+                    <li class="dropdown" id="MerchantMsg">
+                            <a
+                                href="" class="dropdown-toggle fa fa-caret-down"
+                                data-toggle="dropdown"
+                                id="name"
+                                style="display: inline-block">
+                            </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../MerchantMsg/MerchantMsg.html">
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    个人信息
+                                </a>
+                            </li>
+                            <li>
+                                <a id="MerchantLeave">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    安全退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li role="presentation">
+                        <a href="#ShopsSend" aria-controls="ShopSend" role="tab" data-toggle="tab">
+                            申请入库
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--商铺信息-->
+<div class="container ShopsHeader">
+    <div class="row ShopsHeaderRow">
+        <div class="col-xs-4 col-md-2 col-sm-3" id="MerchantImgBig">
+
+        </div>
+        <div class="ShopsHeaderMsg col-xs-8 col-md-10 col-sm-9">
+            <h4 id="MerchantName">Katle</h4>
+            <ul>
+
+                <li>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--固定浮动栏-->
+<div id="side_panel">
+    <div name="sideMouseColor" id="advisory">
+        <button href="" id="advisory_items" class="side_style" >
+            <i class="fa fa-commenting-o"></i>
+            客服
+        </button>
+    </div>
+    <div name="sideMouseColor" id="gotop">
+        <button href="" id="gotop_items" class="side_style">
+            <i class="fa fa-chevron-up"></i>
+            返回
+        </button>
+    </div>
+</div>
+<!--客服-->
+<div class="class=dialogue-wrapper" style="position:fixed;right: 70px;display: block;z-index: 1;bottom: 50px;">
+    <div class="dialogue-main">
+        <div class="dialogue-header">
+            <i class="fa fa-close dialogue-close" id="btn_close"></i>
+            <div class="dialogue-service-info">
+                <img src="../image/xiazai46.png" class="dialogue-service-img" alt="">
+                <div class="dialogue-service-title">
+                    <span class="dialogue-service-name">海洋牧场交易平台</span>
+                    <span class="dialogue-service-detail" id="serviceMsg"></span>
+                </div>
+            </div>
+        </div>
+        <div id="dialogue_contain" class="dialogue-contain">
+            <p class="dialogue-service-contain">
+                <span class="dialogue-toast" id="dialogue-toast"></span>
+                <span class="dialogue-text dialogue-service-text">
+                    您好，请提问
+                </span>
+            </p>
+        </div>
+        <div class="dialogue-submit">
+            <div id="dialogue_hint" class="dialogue-hint">
+                <span class="dialogue-hint-icon">!</span>
+                <span class="dialogue-hint-text">发送内容不能为空</span>
+            </div>
+            <textarea id="dialogue_input" class="dialogue-input-text" style="overflow-y:hidden"></textarea>
+            <div class="dialogue-input-tools">
+                <a id="sendMsg"><i class="fa fa-send"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--申请入库-->
+<div class="container" style="background-color: #EFEFEF">
+    <!--标签头-->
+    <div class="ShopPro">
+        <ul class="nav nav-tabs " role="tablist">
+            <li role="presentation" class="active">
+                <a href="#ShopsRecommend" aria-controls="ShopsRecommend" role="tab" data-toggle="tab">
+                    <i class="fa fa-file-text"></i>
+                    账单
+                </a>
+            </li>
+            <li role="presentation" >
+                <a href="#ShopsSend" aria-controls="ShopSend" role="tab" data-toggle="tab">
+                    <i class="fa fa-send"></i>
+                    去申请
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="ShopsRecommend">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="PutOutBox">
+                        <div class="ShopsSearch">
+                            <div class="ShopsSearchBox">
+                                <span>日期:</span>
+                                <input type="text" class="form-control ShopsNameInput" id="billInput" placeholder="请选择日期">
+                            </div>
+                            <div class="ShopsSearchbtn">
+                                <span id="billSearchBtn">
+                                    查询
+                                </span>
+                                <span id="billResetBtn">
+                                    重置
+                                </span>
+                            </div>
+                        </div>
+                        <div class="ShopsPoutOutContainer">
+                            <table class="billTable">
+                                <thead>
+                                <tr>
+                                    <th>日期</th>
+                                    <th>名称</th>
+                                    <th>种类</th>
+                                    <th>价格</th>
+                                    <th>数量</th>
+                                    <th>收入</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tableBody" id="showBillTable">
+
+                                </tbody>
+                            </table>
+                            <!--分页设置-->
+                            <div class="setPageDiv m-style" >
+                                <div class="Pagination" id="pagination"></div>
+                            </div>
+                        </div>
+                        <div class="ShopsPutOutEmpty" style="display: none">
+                            <h5>暂无账单内容</h5>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane " id="ShopsSend">
+            <div class="container">
+                <form action="" clasxs="form-group ShopsPutOutForm">
+                    <div class="ShopsFormPhoto col-md-2">
+                        <input type="file" id="file_input" multiple="multiple">
+                        <div class="ShopsFormPhotoAdd">
+                            <i class="fa fa-plus Add"></i>
+                        </div>
+                    </div>
+                    <div class="ShopsFormMsg col-md-3">
+                        <ul>
+                            <li>
+                                <span> *产品名称：</span>
+                                <input type="text" id="goodsName">
+                            </li>
+
+                            <li>
+                                <span>*产品数量：</span>
+                                <input type="text" id="goodsAmount">
+                            </li>
+                            <li>
+                                <span>*产品种类：</span>
+                                <select name="" id="goodsType" style="width: 150px;padding: 4px">
+                                    <option value="">种类</option>
+                                    <option value="">鱼</option>
+                                    <option value="">虾</option>
+                                    <option value="">蟹</option>
+                                    <option value="">贝</option>
+                                    <option value="">藻</option>
+                                    <option value="">足头类</option>
+                                    <option value="">肉类</option>
+                                    <option value="">其它</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 ShopsAddress">
+                        <ul>
+                            <li>
+                                <span>*产品产地：</span>
+                                <div class="MerchantAddressSelect">
+                                        <span class="dropdown-toggle">
+                                            <select name="" id="s1" onchange="getCountry()" class="country">
+                                                <option value="" >国家</option>
+                                            </select>
+                                        </span>
+                                    <span class="dropdown">
+                                            <select name="" id="s2" onchange="getProvince()" style="display: none" class="state">
+                                                <option value="">省份,州</option>
+                                            </select>
+                                            <select name="provSelect" id="id_provSelect" class="province" onchange="getChinaProv(this.value)" style="display: none" >
+                                                <option value="">省份</option>
+                                            </select>
+                                        </span>
+                                    <span class="dropdown">
+                                            <select name="" id="s3"  style="display: none" class="dropdown county">
+                                                <option value="" >地级市,县</option>
+                                            </select>
+                                            <select name="citySelect" class="city" id="id_citySelect"  style="display: none">
+                                                <option value="" >城市</option>
+                                            </select>
+                                        </span>
+                                </div>
+                                <input type="text" placeholder="详细地址" id="writeAddress">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ShopsFromDescribe col-md-4" >
+                        <div class="SetDate" id="main">
+                            <div id="s9">
+                                <div class="startDate" >
+                                    <h5>开始投放养殖时间:</h5>
+                                    <div class="selectDate">
+                                        <input type="text" id="date_1" placeholder="请选择日期" readonly>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5>预计产品收货时间:</h5>
+                                    <div class="selectDate">
+                                        <input type="text" id="date_2" placeholder="请选择日期" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a  id="btnApply">
+                            <i class="fa fa-send"></i>
+                            申请
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--底部栏-->
+<div class="bottom">
+    <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse">
+        <div class="container">
+            @海洋牧场交易平台
+        </div>
+    </nav>
+</div>
+
+<!--引入jQuery-->
+<script src="../plugin/jquery-2.1.4/jquery.min.js"></script>
+<script src="../plugin/DatePicker/jquery-migrate-1.4.1.min.js"></script>
+<!--引入bootstrap-->
+<script src="../plugin/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<!--引入dataPicter插件-->
+<script src="../plugin/DatePicker/jquery-ui-datepicker.js"></script>
+<!--引入地址联动插件-->
+<script src="../plugin/PickPcc/worldAddress.js"></script>
+<script src="../plugin/PickPcc/TestAddress.js"></script>
+<script src="../plugin/PickPcc/TestChooseAddress.js"></script>
+<!--引入分页插件-->
+<script src="../plugin/pagination/jquery.pagination.js"></script>
+<!--引入本地js-->
+<script src="../Common/js/commom.js"></script>
+<script src="./js/Shops.js"></script>
+
+
+<!--地区联动选择-->
+<script>
+    var s = ['s1','s2','s3']
+    var opt0 = ['国家','省份,州','地级市,县']
+    function setup(){
+        change(0)
+    }
+</script>
+<script>
+
+    function loadProvince(regionId) {
+        $('#id_provSelect').html("")
+        $('#id_provSelect').append("<option value=''>省份</option>")
+
+        var jsonStr = getAddress(regionId,0)
+        for(var k in jsonStr){
+            $('#id_provSelect').append(
+                "<option value='" + k + "'>" + jsonStr[k] + "</option>"
+            )
+        }
+        if(regionId.length != 6){
+            $('#id_citySelect').html("")
+            $('#id_citySelect').append("<option value=''>城市</option>")
+        }else{
+            $('#id_provSelect').val(regionId.substring(0,2) + '0000')
+        }
+    }
+    function loadCity(regionId) {
+        $("#id_citySelect").html("");
+        $("#id_citySelect").append("<option value=''>城市</option>");
+        if(regionId.length == 6) {
+            var jsonStr = getAddress(regionId, 1);
+            for ( var k in jsonStr) {
+                $("#id_citySelect").append(
+                    "<option value='"+k+"'>" + jsonStr[k] + "</option>");
+            }
+            if(regionId.substring(2,6) != '0000') {
+                $("#id_citySelect").val(regionId.substring(0, 4) + "00");
+            }
+        }
+    }
+    function getCountry() {
+        change(1);
+        var country = document.getElementById("s1");
+        var province = document.getElementById("s2");
+        var city = document.getElementById("s3");
+        var provSelect = document.getElementById("id_provSelect");
+        var citySelect = document.getElementById("id_citySelect");
+        if (country.value == "中国") {
+            loadProvince('440116');
+            provSelect.style.display = "block";
+            province.style.display = "none";
+            city.style.display = "none";
+        } else {
+            province.style.display = "block";
+            provSelect.style.display = "none";
+            citySelect.style.display = "none";
+        }
+    }
+    function getChinaProv(regionId) {
+        document.getElementById("id_citySelect").style.display = "block";
+        loadCity(regionId);
+    }
+    function getProvince() {
+        change(2);
+        var province = document.getElementById("s2");
+        var city = document.getElementById("s3");
+        city.style.display = 'block';
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="meta description">
+    <title>订单列表</title>
+    <!--=== Favicon ===-->
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon"/>
+    <!--== Google Fonts ==-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700" rel="stylesheet">
+    <!--=== Bootstrap CSS ===-->
+    <link href="assets/css/vendor/bootstrap.min.css" rel="stylesheet">
+    <!--=== Font-Awesome CSS ===-->
+    <link href="assets/css/vendor/font-awesome.css" rel="stylesheet">
+    <!--=== Plugins CSS ===-->
+    <link href="assets/css/plugins.css" rel="stylesheet">
+    <!--=== Helper CSS ===-->
+    <link href="assets/css/helper.min.css" rel="stylesheet">
+    <!--=== Main Style CSS ===-->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!--引入Dialog-->
+    <link rel="stylesheet" href="../plugin/Dialog/dialog.css">
+    <link rel="stylesheet" href="assets/css/startScore.css">
+    <!--引入分页插件-->
+    <link rel="stylesheet" href="../plugin/pagination/pagination.css">
+
+    <link rel="stylesheet" href="assets/css/index.css">
+    <!-- Modernizer JS -->
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+<div class="header" style="background-color:#F8F8F8">
+    <div class="header-center" style="line-height: 80px;">
+        <a href="" class="navbar-brand" style="font-size: 20px;margin-left: 50px;color:#777777">海洋牧场交易平台</a>
+        <a href="../Home/home.html" style="color:#777777;font-size: 14px">首页</a>
+    </div>
+</div>
+<!--== Page Content Wrapper Start ==-->
+<div id="page-content-wrapper">
+    <div class="container">
+        <div class="row">
+            <!-- Start Shop Page Content -->
+            <div class="col-lg-10 m-auto">
+                <div class="shop-page-content-wrap">
+                    <div class="products-settings-option d-block d-md-flex">
+                        <div class="product-cong-left d-flex align-items-center">
+                            <ul class="product-view d-flex align-items-center">
+                                <li class="list current"><i class="fa fa-list-ul"></i></li>
+                               <!-- <li class="box-gird"><i class="fa fa-th"></i></li>-->
+                            </ul>
+                            <span class="show-items">Items 1 - 9 of 17</span>
+                        </div>
+                    </div>
+
+                    <div class="shop-page-products-wrap">
+                        <div class="products-wrapper products-list-view">
+                            <div class="row" id="orderList">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="products-settings-option d-block d-md-flex">
+
+                        <!--分页设置-->
+                        <div class="setPageDiv m-style" >
+                            <div class="Pagination" id="pagination"></div>
+                        </div>
+
+                        <div class="product-per-page d-flex align-items-center mt-3 mt-md-0">
+                            <label for="show-per-page">Show Per Page</label>
+                            <select name="sort" id="show-per-page">
+                                <option value="9">12</option>
+                                <option value="15">15</option>
+                                <option value="21">18</option>
+                                <option value="6">21</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Shop Page Content -->
+        </div>
+    </div>
+</div>
+<!--== Page Content Wrapper End ==-->
+
+<!--== Start Newsletter Area ==-->
+
+    </div>
+</div>
+<!--== End Newsletter Area ==-->
+
+<!-- Scroll to Top Start -->
+<a href="#" class="scrolltotop"><i class="fa fa-angle-up"></i></a>
+<!-- Scroll to Top End -->
+
+<!--=======================Javascript============================-->
+<!--=== Jquery Min Js ===-->
+<script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
+<!--=== Jquery Migrate Min Js ===-->
+<script src="assets/js/vendor/jquery-migrate-1.4.1.min.js"></script>
+<!--=== Popper Min Js ===-->
+<script src="assets/js/vendor/popper.min.js"></script>
+<!--=== Bootstrap Min Js ===-->
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+<!--=== Ajax Mail Js ===-->
+<script src="assets/js/ajax-mail.js"></script>
+<!--=== Plugins Min Js ===-->
+<script src="assets/js/plugins.js"></script>
+<!--=== Dialog Js ===-->
+<script src="../plugin/Dialog/mDialogMin.js"></script>
+<!--=== Active Js ===-->
+<script src="assets/js/active.js"></script>
+<!--pagination-->
+<script src="../plugin/pagination/jquery.pagination.js"></script>
+<script src="assets/js/index.js"></script>
+</body>
+</html>
